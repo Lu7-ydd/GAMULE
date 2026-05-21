@@ -191,7 +191,7 @@ def build_pca_initialization(
         representative_indices=representative_indices,
     )
 
-    init_gene_emb = torch.from_numpy(pcs[:num_genes, :embed_dim]).float()
+    init_gene_emb = torch.from_numpy(pcs[:num_genes, :embed_dim].copy()).float()
     init_hyperedge_emb = init_gene_emb[reps]
 
     gene_emb_norm = F.normalize(init_gene_emb, p=2, dim=-1)
